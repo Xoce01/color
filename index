@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Paint App</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+        <script>
+function displayButton(col, x, y){
+    noStroke();
+    fill(col);
+    ellipseMode(CENTER);
+    ellipse(x, y, 40, 40);
+    if(dist(x, y, mouseX, mouseY) < 40/2 && mouseIsPressed){
+        selectedColour = col;
+    }
+}
+function setup(){
+    createCanvas(windowWidth-10, windowHeight-10);
+    background(200);
+}
+var colours = ['red', 'blue', 'black', 'green', '#fdf'];
+var selectedColour = 'red';
+function draw(){
+    for (var i = colours.length - 1; i >= 0; i--) {
+        var colour = colours[i];
+        displayButton(colour, 30+i*50, 50);
+    }
+    if(mouseIsPressed){
+        fill(selectedColour);
+        ellipse(mouseX, mouseY, 20, 20);
+    }
+}
+        </script>
+    </head>
+    <body>
+        <div >
+
+        </div>
+    </body>
+</html>
